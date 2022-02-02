@@ -1,0 +1,4 @@
+Symlinking /home/damian/practical_ws/devel/share/husky_controller/cmake/husky_controllerConfig-version.cmake
+Symlinking /home/damian/practical_ws/devel/share/husky_controller/cmake/husky_controllerConfig.cmake
+Symlinking /home/damian/practical_ws/devel/lib/pkgconfig/husky_controller.pc
+Symlinking /home/damian/practical_ws/devel/lib/husky_controller/circle_driver

@@ -1,0 +1,6 @@
+devel_space: /home/damian/practical_ws/devel
+install: false
+install_space: /home/damian/practical_ws/install
+profile: default
+source_space: /home/damian/practical_ws/src
+workspace: /home/damian/practical_ws

@@ -1,0 +1,8 @@
+prefix=/home/damian/practical_ws/devel/.private/husky_control
+
+Name: husky_control
+Description: Description of husky_control
+Version: 0.0.1
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

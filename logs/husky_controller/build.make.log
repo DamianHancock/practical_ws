@@ -1,0 +1,4 @@
+[35m[1mScanning dependencies of target circle_driver[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/circle_driver.dir/src/circle_driver.cpp.o[0m
+[100%] [32m[1mLinking CXX executable /home/damian/practical_ws/devel/.private/husky_controller/lib/husky_controller/circle_driver[0m
+[100%] Built target circle_driver
