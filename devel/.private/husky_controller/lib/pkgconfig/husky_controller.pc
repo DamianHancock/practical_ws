@@ -1,4 +1,4 @@
-prefix=/home/damian/practical_ws/devel/.private/husky_controller
+prefix=/home/damian/Chironix_Practical/devel/.private/husky_controller
 
 Name: husky_controller
 Description: Description of husky_controller

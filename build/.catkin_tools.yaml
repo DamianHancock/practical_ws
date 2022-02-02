@@ -1,6 +1,6 @@
-devel_space: /home/damian/practical_ws/devel
+devel_space: /home/damian/Chironix_Practical/devel
 install: false
-install_space: /home/damian/practical_ws/install
+install_space: /home/damian/Chironix_Practical/install
 profile: default
-source_space: /home/damian/practical_ws/src
-workspace: /home/damian/practical_ws
+source_space: /home/damian/Chironix_Practical/src
+workspace: /home/damian/Chironix_Practical

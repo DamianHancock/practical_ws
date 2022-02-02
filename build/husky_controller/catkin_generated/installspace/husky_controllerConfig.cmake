@@ -67,14 +67,14 @@ set(husky_controller_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(husky_controller_SOURCE_PREFIX /home/damian/practical_ws/src/simulation_control/src/husky_controller)
-  set(husky_controller_DEVEL_PREFIX /home/damian/practical_ws/devel/.private/husky_controller)
+  set(husky_controller_SOURCE_PREFIX /home/damian/Chironix_Practical/src/simulation_control/src/husky_controller)
+  set(husky_controller_DEVEL_PREFIX /home/damian/Chironix_Practical/devel/.private/husky_controller)
   set(husky_controller_INSTALL_PREFIX "")
   set(husky_controller_PREFIX ${husky_controller_DEVEL_PREFIX})
 else()
   set(husky_controller_SOURCE_PREFIX "")
   set(husky_controller_DEVEL_PREFIX "")
-  set(husky_controller_INSTALL_PREFIX /home/damian/practical_ws/install)
+  set(husky_controller_INSTALL_PREFIX /home/damian/Chironix_Practical/install)
   set(husky_controller_PREFIX ${husky_controller_INSTALL_PREFIX})
 endif()
 
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/damian/practical_ws/install/lib;/home/damian/practical_ws/devel/lib;/opt/ros/melodic/lib)
+    foreach(path /home/damian/Chironix_Practical/install/lib;/home/damian/Chironix_Practical/devel/lib;/home/damian/practical_ws/devel/lib;/opt/ros/melodic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

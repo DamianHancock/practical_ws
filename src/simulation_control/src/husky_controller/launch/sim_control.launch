@@ -1,0 +1,6 @@
+<launch>
+    <include file="$(find husky_gazebo)/launch/husky_empty_world.launch">
+    </include>
+    <node pkg="husky_controller" name="circle_driver" type="circle_driver.py" output="screen">
+    </node>
+</launch>

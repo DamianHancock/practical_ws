@@ -1,0 +1,6 @@
+simulation_control/src/husky_controller
+/home/damian/Chironix_Practical/devel/.private/husky_controller/cmake.lock /home/damian/Chironix_Practical/devel/./cmake.lock
+/home/damian/Chironix_Practical/devel/.private/husky_controller/share/husky_controller/cmake/husky_controllerConfig-version.cmake /home/damian/Chironix_Practical/devel/share/husky_controller/cmake/husky_controllerConfig-version.cmake
+/home/damian/Chironix_Practical/devel/.private/husky_controller/share/husky_controller/cmake/husky_controllerConfig.cmake /home/damian/Chironix_Practical/devel/share/husky_controller/cmake/husky_controllerConfig.cmake
+/home/damian/Chironix_Practical/devel/.private/husky_controller/lib/pkgconfig/husky_controller.pc /home/damian/Chironix_Practical/devel/lib/pkgconfig/husky_controller.pc
+/home/damian/Chironix_Practical/devel/.private/husky_controller/lib/husky_controller/circle_driver /home/damian/Chironix_Practical/devel/lib/husky_controller/circle_driver

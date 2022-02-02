@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/damian/practical_ws/src/simulation_control/src/husky_controller/src/circle_driver.cpp
+/home/damian/Chironix_Practical/src/simulation_control/src/husky_controller/src/circle_driver.cpp
 ros/ros.h
 -
 geometry_msgs/Twist.h
@@ -14,6 +14,8 @@ geometry_msgs/Twist.h
 stdlib.h
 -
 time.h
+-
+iostream
 -
 
 /opt/ros/melodic/include/geometry_msgs/Twist.h

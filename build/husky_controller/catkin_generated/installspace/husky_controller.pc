@@ -1,4 +1,4 @@
-prefix=/home/damian/practical_ws/install
+prefix=/home/damian/Chironix_Practical/install
 
 Name: husky_controller
 Description: Description of husky_controller

@@ -3,7 +3,7 @@
 
 # Relative path conversion top directories.
 set(CMAKE_RELATIVE_PATH_TOP_SOURCE "/usr/src/googletest")
-set(CMAKE_RELATIVE_PATH_TOP_BINARY "/home/damian/practical_ws/build/husky_controller")
+set(CMAKE_RELATIVE_PATH_TOP_BINARY "/home/damian/Chironix_Practical/build/husky_controller")
 
 # Force unix paths in dependencies.
 set(CMAKE_FORCE_UNIX_PATHS 1)

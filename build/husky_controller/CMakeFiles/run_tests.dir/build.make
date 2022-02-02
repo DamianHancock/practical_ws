@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/damian/practical_ws/src/simulation_control/src/husky_controller
+CMAKE_SOURCE_DIR = /home/damian/Chironix_Practical/src/simulation_control/src/husky_controller
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/damian/practical_ws/build/husky_controller
+CMAKE_BINARY_DIR = /home/damian/Chironix_Practical/build/husky_controller
 
 # Utility rule file for run_tests.
 
@@ -67,6 +67,6 @@ CMakeFiles/run_tests.dir/clean:
 .PHONY : CMakeFiles/run_tests.dir/clean
 
 CMakeFiles/run_tests.dir/depend:
-	cd /home/damian/practical_ws/build/husky_controller && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/damian/practical_ws/src/simulation_control/src/husky_controller /home/damian/practical_ws/src/simulation_control/src/husky_controller /home/damian/practical_ws/build/husky_controller /home/damian/practical_ws/build/husky_controller /home/damian/practical_ws/build/husky_controller/CMakeFiles/run_tests.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/damian/Chironix_Practical/build/husky_controller && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/damian/Chironix_Practical/src/simulation_control/src/husky_controller /home/damian/Chironix_Practical/src/simulation_control/src/husky_controller /home/damian/Chironix_Practical/build/husky_controller /home/damian/Chironix_Practical/build/husky_controller /home/damian/Chironix_Practical/build/husky_controller/CMakeFiles/run_tests.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/run_tests.dir/depend
 
