@@ -2,8 +2,6 @@
 #include <geometry_msgs/Twist.h>
 #include <stdlib.h>
 #include <time.h>
-#include <iostream>
-using namespace std;
 
 int main(int argc, char **argv) {
   ros::init(argc, argv, "husky_controller");
@@ -17,8 +15,9 @@ int main(int argc, char **argv) {
   while(ros::ok()) {
     geometry_msgs::Twist msg;
     current = time(0);
-    elapsed = start - current;
-    cout << elapsed;
+    elapsed = current - start;
+
+    ROS_INFO("%d", elapsed);
     
     if(elapsed <= 10){
       msg.linear.x = 0.0;
