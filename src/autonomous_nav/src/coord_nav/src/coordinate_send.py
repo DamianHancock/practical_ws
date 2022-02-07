@@ -1,60 +1,101 @@
 #!/usr/bin/env python
 
 import rospy
-import time
 import csv
-from move_base_msgs.msg import MoveBaseActionGoal
+from move_base_msgs.msg import MoveBaseAction, MoveBaseActionGoal, MoveBaseActionResult, MoveBaseActionFeedback
+import actionlib
 
-def get_coord():
-    coords = []
-    with open('coordinates.csv', 'r') as file:
-        csvFile = csv.reader(file)
-    
-        for lines in csvFile:
-            print(lines)
 
-    # print(lines)
-    coords = list(map(float, lines))
-    # for x in lines:
-    #     coords.append(float(x))
-    
-    return coords
+def main():
+    cn = CoordNav()
+    publish = True
+    i = 0
+    cn.set_goals()
 
-def use_coord():
     rospy.init_node('coord_nav', anonymous=True)
     coord_pub = rospy.Publisher('move_base/goal', MoveBaseActionGoal, queue_size=100)
+    rospy.Subscriber('move_base/result', MoveBaseActionResult, cn.status_cb)
+    rospy.Subscriber('move_base/feedback', MoveBaseActionFeedback, cn.pos_cb)
+   
+    client = actionlib.SimpleActionClient('move_base', MoveBaseAction)
+    client.wait_for_server()
+
     coord_msg = MoveBaseActionGoal()
-
-    rate = rospy.Rate(10)
-
-    coords = get_coord()
+    goal = coord_msg.goal.target_pose
+    goals = cn.get_coord()
+    pos_x, pos_y, ori_z, ori_w = goals[i]
     
-    pos_x = coords[0]
-    pos_y = coords[1]
-    ori_z = coords[2]
-    ori_w = coords[3]
+    rate = rospy.Rate(20)
 
-    time.sleep(0.4)
+    while not rospy.is_shutdown():
+        if publish:
+            goal.header.frame_id = 'odom'
+            goal.pose.position.x = pos_x
+            goal.pose.position.y = pos_y
+            goal.pose.orientation.z = ori_z
+            goal.pose.orientation.w = ori_w
+            coord_pub.publish(coord_msg)
+            publish = False
+            print("\nReceived new goal.")
 
-    coord_msg.goal.target_pose.header.frame_id = 'odom'
-    coord_msg.goal.target_pose.pose.position.x = pos_x
-    coord_msg.goal.target_pose.pose.position.y = pos_y
-    coord_msg.goal.target_pose.pose.orientation.z = ori_z
-    coord_msg.goal.target_pose.pose.orientation.w = ori_w
+        elif cn.status >= 3:
+            print("Saved coordinates successfully.")
+            print(cn.text)
+            cn.save_coord()
+            cn.status = 0
+            i += 1
+            if i < len(goals):
+                pos_x, pos_y, ori_z, ori_w = goals[i]
+                publish = True
+            
+        rate.sleep()
 
-    coord_pub.publish(coord_msg)
+class CoordNav:
+    def __init__(self):
+        self.status = 0
+        self.final_coords = []
+        self.text = None
 
-    coord_list = [pos_x, pos_y, ori_z, ori_w]
-    coord_list = list(map(str, coord_list))
+    def set_goals(self):
+        with open('coordinates.csv', 'w') as f:
+            writer = csv.writer(f)
+            writer.writerows([
+                [7.0, 8.0, 0.75, 0.66],
+                [5.0, 4.0, 0.8, 0.5],
+                [4.0, 2.0, 0.8, 0.5]
+            ])
 
-    with open('path/to/csv_file', 'w') as file:
-        writer = csv.writer(file)
+    def get_coord(self):
+        goals = []
+        with open('coordinates.csv', 'r') as f:
+            reader = csv.reader(f)
+            for row in reader:
+                goals.append(list(map(float, row)))
 
-        writer.writerow(coord_list)
+        return goals
 
-        
+    def save_coord(self):
+        with open('coordinates.csv', 'a+') as f:
+            writer = csv.writer(f)
+            self.final_coords.append(self.text)
+            writer.writerow(self.final_coords)
+
+    def status_cb(self, msg):
+        if msg.status.status >= 3:
+            self.status = msg.status.status  
+            self.text = msg.status.text
+
+    def pos_cb(self, msg):
+        self.final_coords = list(map(str, [
+            msg.feedback.base_position.pose.position.x,
+            msg.feedback.base_position.pose.position.y,
+            msg.feedback.base_position.pose.orientation.z,
+            msg.feedback.base_position.pose.orientation.w
+        ]))
+
 
 if __name__ == '__main__':
     try:
-        use_coord()
-    except rospy.ROSInterruptException: pass
+        main()
+    except rospy.ROSInterruptException: 
+        pass
