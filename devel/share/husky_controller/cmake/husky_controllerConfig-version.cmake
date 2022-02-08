@@ -1,1 +1,0 @@
-/home/damian/practical_ws/devel/.private/husky_controller/share/husky_controller/cmake/husky_controllerConfig-version.cmake
