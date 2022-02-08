@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <package>
-  <name>husky_controller</name>
+  <name>simulation_control</name>
   <version>0.0.1</version>
-  <description>Controls Husky's movements</description>
+  <description>Move husky in a circle pattern</description>
 
-  <maintainer email="rasteashish@gmail.com">Ashish Raste</maintainer>
+  <maintainer email="damianhancock09@gmail.com">Damian Hancock</maintainer>
   <license>MIT</license>
 
   <buildtool_depend>catkin</buildtool_depend>

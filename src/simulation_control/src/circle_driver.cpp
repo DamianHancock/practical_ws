@@ -16,8 +16,6 @@ int main(int argc, char **argv) {
     geometry_msgs::Twist msg;
     current = time(0);
     elapsed = current - start;
-
-    ROS_INFO("%d", elapsed);
     
     if(elapsed <= 10){
       msg.linear.x = 0.0;
