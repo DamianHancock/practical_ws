@@ -36,11 +36,11 @@ def main():
             goal.pose.orientation.w = ori_w
             coord_pub.publish(coord_msg)
             publish = False
-            print("\nReceived new goal.")
+            rospy.loginfo("\nReceived new goal.")
 
         elif cn.status >= 3:
-            print("Saved coordinates successfully.")
-            print(cn.text)
+            rospy.loginfo("Saved coordinates successfully.")
+            rospy.loginfo(cn.text)
             cn.save_coord()
             cn.status = 0
             i += 1
@@ -55,30 +55,16 @@ class CoordNav:
         self.status = 0
         self.final_coords = []
         self.text = None
+        self.fname = "src/autonomous_nav/src/resources/coordinates.csv"
 
     def set_goals(self):
-        with open('coordinates.csv', 'w') as f:
+        with open(self.fname, 'w') as f:
             writer = csv.writer(f)
             writer.writerows([
                 [7.0, 8.0, 0.75, 0.66],
-                [5.0, 4.0, 0.8, 0.5],
-                [4.0, 2.0, 0.8, 0.5]
+                [5.0, 4.0, 0.75, 0.66],
+                [1.0, 1.0, 0.75, 0.66]
             ])
-
-    def get_coord(self):
-        goals = []
-        with open('coordinates.csv', 'r') as f:
-            reader = csv.reader(f)
-            for row in reader:
-                goals.append(list(map(float, row)))
-
-        return goals
-
-    def save_coord(self):
-        with open('coordinates.csv', 'a+') as f:
-            writer = csv.writer(f)
-            self.final_coords.append(self.text)
-            writer.writerow(self.final_coords)
 
     def status_cb(self, msg):
         if msg.status.status >= 3:
@@ -92,6 +78,21 @@ class CoordNav:
             msg.feedback.base_position.pose.orientation.z,
             msg.feedback.base_position.pose.orientation.w
         ]))
+
+    def get_coord(self):
+        goals = []
+        with open(self.fname, 'r') as f:
+            reader = csv.reader(f)
+            for row in reader:
+                goals.append(list(map(float, row)))
+
+        return goals
+
+    def save_coord(self):
+        with open(self.fname, 'a+') as f:
+            writer = csv.writer(f)
+            self.final_coords.append(self.text)
+            writer.writerow(self.final_coords)
 
 
 if __name__ == '__main__':
