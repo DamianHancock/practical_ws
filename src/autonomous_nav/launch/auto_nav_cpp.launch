@@ -1,0 +1,4 @@
+<launch>
+    <node pkg="autonomous_nav" name="traverse_goals" type="traverse_goals" output="screen">
+    </node>
+</launch>
