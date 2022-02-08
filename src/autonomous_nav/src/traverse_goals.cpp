@@ -1,4 +1,5 @@
 #include <ros/ros.h>
+#include <ros/package.h>
 #include <iostream>
 #include <fstream>
 #include <string.h>
@@ -13,6 +14,7 @@
 #include <move_base_msgs/MoveBaseActionFeedback.h>
 #include <actionlib/client/simple_action_client.h>
 
+
 using namespace std;
 
 typedef actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction> MoveBaseClient;
@@ -23,7 +25,7 @@ class CoordNav
     int status = 0;
     vector<string> final_coords;
     string text;
-    string fname = "src/autonomous_nav/src/resources/coordinates.csv";
+    string fname = (ros::package::getPath("autonomous_nav") + "/resources/coordinates.csv").c_str();
 
     vector<vector<string>> get_coord();
     void set_goals();
@@ -62,7 +64,7 @@ vector<vector<string>> CoordNav::get_coord()
 void CoordNav::set_goals()
 {
     ofstream file;
-    file.open("coordinates.csv");
+    file.open(fname);
     file << "7.0,3.0,0.75,0.66" << endl;
     file << "5.0,4.0,0.75,0.66" << endl;
     file << "1.0,1.0,0.75,0.66" << endl;

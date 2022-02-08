@@ -4,7 +4,7 @@ import rospy
 import csv
 from move_base_msgs.msg import MoveBaseAction, MoveBaseActionGoal, MoveBaseActionResult, MoveBaseActionFeedback
 import actionlib
-
+import os, rospkg
 
 def main():
     cn = CoordNav()
@@ -52,13 +52,14 @@ def main():
 
 class CoordNav:
     def __init__(self):
+        self.rospack = rospkg.RosPack()
         self.status = 0
         self.final_coords = []
         self.text = None
-        self.fname = "src/autonomous_nav/src/resources/coordinates.csv"
+        self.fname = "coordinates.csv"
 
     def set_goals(self):
-        with open(self.fname, 'w') as f:
+        with open(os.path.join(self.rospack.get_path("autonomous_nav"), "resources", self.fname), 'w') as f:
             writer = csv.writer(f)
             writer.writerows([
                 [7.0, 8.0, 0.75, 0.66],
@@ -81,7 +82,7 @@ class CoordNav:
 
     def get_coord(self):
         goals = []
-        with open(self.fname, 'r') as f:
+        with open(os.path.join(self.rospack.get_path("autonomous_nav"), "resources", self.fname), 'r') as f:
             reader = csv.reader(f)
             for row in reader:
                 goals.append(list(map(float, row)))
@@ -89,7 +90,7 @@ class CoordNav:
         return goals
 
     def save_coord(self):
-        with open(self.fname, 'a+') as f:
+        with open(os.path.join(self.rospack.get_path("autonomous_nav"), "resources", self.fname), 'a+') as f:
             writer = csv.writer(f)
             self.final_coords.append(self.text)
             writer.writerow(self.final_coords)
