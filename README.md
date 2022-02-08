@@ -57,6 +57,7 @@ Cloning this repository will directly install the required workspace `practical_
 
 The workspace tree has the following structure before building:
 
+'''bash
 practical_ws
 ├── CMakeLists.txt -> /opt/ros/melodic/share/catkin/cmake/toplevel.cmake
 ├── README.md
@@ -64,7 +65,7 @@ practical_ws
     ├── autonomous_nav
     │   ├── CMakeLists.txt
     │   ├── launch
-    │   │   └── sim_control.launch
+    │   │   └── autonomous_nav.launch
     │   ├── package.xml
     │   ├── README.md
     │   ├── resources
@@ -81,6 +82,7 @@ practical_ws
         └── src
             ├── circle_driver.cpp
             └── circle_driver.py
+'''
 
 ### Git Clone
 
