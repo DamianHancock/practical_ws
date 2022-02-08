@@ -1,8 +1,0 @@
-prefix=/home/damian/Chironix_Practical/devel/.private/husky_controller
-
-Name: husky_controller
-Description: Description of husky_controller
-Version: 0.0.1
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

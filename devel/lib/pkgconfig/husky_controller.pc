@@ -1,1 +1,0 @@
-/home/damian/practical_ws/devel/.private/husky_controller/lib/pkgconfig/husky_controller.pc
