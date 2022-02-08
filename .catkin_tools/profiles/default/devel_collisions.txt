@@ -1,5 +1,0 @@
-/home/damian/Chironix_Practical/devel/share/husky_controller/cmake/husky_controllerConfig-version.cmake 2
-/home/damian/Chironix_Practical/devel/lib/pkgconfig/husky_controller.pc 2
-/home/damian/Chironix_Practical/devel/./cmake.lock 2
-/home/damian/Chironix_Practical/devel/share/husky_controller/cmake/husky_controllerConfig.cmake 2
-/home/damian/Chironix_Practical/devel/lib/husky_controller/circle_driver 2
