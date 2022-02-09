@@ -4,6 +4,7 @@ import rospy
 import time
 from geometry_msgs.msg import Twist
 
+
 def move():
     rospy.init_node('husky_controller', anonymous=True)
     vel_pub = rospy.Publisher('husky_velocity_controller/cmd_vel', Twist, queue_size=100)
@@ -12,7 +13,6 @@ def move():
     rate = rospy.Rate(10)
 
     start_time = time.time()
-    # wank point put seconds in launch
 
     while not rospy.is_shutdown():
         current_time = time.time()
@@ -20,13 +20,15 @@ def move():
 
         if elapsed_time <= 10.0:
             vel_msg.linear.x = 0.0
-            vel_msg.angular.z = 2.0
+            vel_msg.angular.z = -2.0
             vel_pub.publish(vel_msg)
 
         elif elapsed_time > 10.0 and elapsed_time <= 20.0:
             vel_msg.linear.x = 0.0
-            vel_msg.angular.z = -2.0
+            vel_msg.angular.z = 2.0
             vel_pub.publish(vel_msg)
+        
+        rate.sleep()
 
 if __name__ == '__main__':
     try:

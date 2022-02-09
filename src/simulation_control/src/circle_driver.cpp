@@ -19,12 +19,12 @@ int main(int argc, char **argv) {
     
     if(elapsed <= 10){
       msg.linear.x = 0.0;
-      msg.angular.z = 2.0;
+      msg.angular.z = -2.0;
       pub.publish(msg);
     }
     else if(elapsed > 10 && elapsed <= 20){
       msg.linear.x = 0.0;
-      msg.angular.z = -2.0;
+      msg.angular.z = 2.0;
       pub.publish(msg);
     }
     
