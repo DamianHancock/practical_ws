@@ -105,6 +105,7 @@ Build and source the workshop, which will successfully build each package contai
 
 ```sh
 cd ~/practical_ws
+rosdep install --from-paths src --ignore-src -r -y
 catkin build
 source devel/setup.bash
 ```
