@@ -1,116 +1,11 @@
-#include <ros/ros.h>
-#include <ros/package.h>
-#include <iostream>
-#include <fstream>
-#include <string.h>
-#include <string>
-#include <vector>
-#include <sstream>
-#include <cmath>
-
-#include <move_base_msgs/MoveBaseAction.h>
-#include <move_base_msgs/MoveBaseActionGoal.h>
-#include <move_base_msgs/MoveBaseActionResult.h>
-#include <move_base_msgs/MoveBaseActionFeedback.h>
-#include <actionlib/client/simple_action_client.h>
-
-
-using namespace std;
-
-typedef actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction> MoveBaseClient;
-
-class CoordNav
-{
-  public:
-    int status = 0;
-    vector<string> final_coords;
-    string text;
-    string fname = (ros::package::getPath("autonomous_nav") + "/resources/coordinates.csv").c_str();
-
-    vector<vector<string>> get_coord();
-    void set_goals();
-    void save_coord();
-    void status_cb(const move_base_msgs::MoveBaseActionResult::ConstPtr& msg);
-    void pos_cb(const move_base_msgs::MoveBaseActionFeedback::ConstPtr& msg);
-};
-
-vector<vector<string>> CoordNav::get_coord()
-{
-    vector<vector<string>> content;
-	vector<string> row;
-	string line, word;
-
-	fstream file(fname, ios::in);
-	if(file.is_open())
-	{
-		while(getline(file, line))
-		{
-			row.clear();
-
-			stringstream str(line);
-
-			while(getline(str, word, ','))
-				row.push_back(word);
-			content.push_back(row);
-		}
-        file.close();
-	}
-	else
-		ROS_INFO("Could not open the file\n");
-        
-    return content;
-}
-
-void CoordNav::set_goals()
-{
-    ofstream file;
-    file.open(fname);
-    file << "7.0,3.0,0.75,0.66" << endl;
-    file << "5.0,4.0,0.75,0.66" << endl;
-    file << "1.0,1.0,0.75,0.66" << endl;
-    file.close();
-}
-
-void CoordNav::status_cb(const move_base_msgs::MoveBaseActionResult::ConstPtr& msg)
-{
-    if(msg->status.status >= 3)
-    {
-        status = msg->status.status;
-        text = msg->status.text;
-    }
-}
-
-void CoordNav::pos_cb(const move_base_msgs::MoveBaseActionFeedback::ConstPtr& msg)
-{
-    final_coords = {
-        to_string(msg->feedback.base_position.pose.position.x),
-        to_string(msg->feedback.base_position.pose.position.y),
-        to_string(msg->feedback.base_position.pose.orientation.z),
-        to_string(msg->feedback.base_position.pose.orientation.w)
-    };
-}
-
-void CoordNav::save_coord()
-{
-    int i;
-    ofstream file;
-    file.open(fname, std::ios_base::app);
-    
-    final_coords.push_back(text);
-
-    for(i=0; i<final_coords.size()-1; i++)
-	{
-		file << final_coords[i] << ',';
-	}
-    file << final_coords[i] << endl;
-    file.close();
-}
+#include "coord_nav.h"
 
 int main(int argc, char **argv)
 {
     CoordNav cn;
     bool publish = true;
     int i = 0;
+    int start, current;
     
     cn.set_goals();
 
@@ -139,8 +34,12 @@ int main(int argc, char **argv)
 
     ros::Rate rate(20);
 
+    start = time(0);
+
     while(ros::ok())
     {
+        current = time(0);
+        cn.setElapsed(current - start);
         if(publish == true){
             coord_msg.goal.target_pose.header.frame_id = "odom";
             coord_msg.goal.target_pose.pose.position.x = std::stod(pos_x);
@@ -151,13 +50,12 @@ int main(int argc, char **argv)
             coord_pub.publish(coord_msg);
             publish = false;
             ROS_INFO("Received new goal.");
-            
         }
-        else if(cn.status >= 3)
+        else if(cn.getStatus() >= 3)
         {
             ROS_INFO("Saved coordinates successfully.");
             cn.save_coord();
-            cn.status = 0;
+            cn.setStatus(0);
             i++;
             if(i < goals.size())
             {
