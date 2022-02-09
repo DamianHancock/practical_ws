@@ -21,7 +21,7 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-add_executable(traverse_goals src/traverse_goals.cpp)
+add_executable(traverse_goals src/traverse_goals.cpp src/nav_func.cpp)
 
 target_link_libraries(traverse_goals ${catkin_LIBRARIES})
 
