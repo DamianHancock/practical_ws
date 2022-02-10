@@ -28,10 +28,12 @@ The robot can also be visualised in both Gazebo and RViz.
 #### Launch the robot simulation
 
 For launching the simulation of the circle driver code:
-* C++ node: ```bash
+* C++ node: 
+```bash
 $ roslaunch simulation_control task_one_cpp.launch
 ```
-* Python node: ```bash
+* Python node: 
+```bash
 $ roslaunch simulation_control task_one_cpp.launch
 ```
 
