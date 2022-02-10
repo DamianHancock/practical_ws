@@ -1,4 +1,7 @@
 <launch>
+    <include file="$(find timed_roslaunch)/launch/timed_task_two.launch">
+    </include>
+
     <node pkg="autonomous_nav" name="traverse_goals" type="traverse_goals.py" output="screen">
     </node>
 </launch>
