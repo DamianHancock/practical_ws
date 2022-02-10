@@ -1,11 +1,21 @@
 # Simulation Robot Control
 
+**Goal:** Simulated robot navigating in a circular fashion using Daemon or 3D Visulaisation
+
+**Overview:** 
+This task uses the ROS packages Clearpath makes available for the Husky. 
+This includes the Husky Control, Gazebo and Viz packages.
+
+## Background
+
+### Husky Velocity Messages and Topics
+
 This package takes advantage of the Clearpath Husky and the available sensors onboard, 
 including a range of topics such as the velocity of the robots movements in different directions.
 
 The husky contains the `/husky_velocity_controller/cmd_vel` namespace topic published
 by `/twist_mux` node and subscribed by `gazebo` node. 
-`geometry_msgs/Twist` messages are published to the gazebo node to make the husky move.
+`geometry_msgs/Twist` messages are published to the gazebo node to make the husky move using external input from the nodes produced by the developer.
 
 This can essentially be manually accomplished from command line using:
 
@@ -17,11 +27,18 @@ The `circle_driver.cpp` and `circle_driver.py` files publish appropriate
 messages to `/husky_velocity_controller/cmd_vel` topic.
 These ROS nodes command the simulated Husky to move in a circular path.
 
+## Workspace Setup
+
+Make sure you are using the Catkin Workspace `/practical_ws` and that was previously cloned from [here](https://github.com/DamianHancock/practical_ws).
+Don't forget to build and source!
+
 ## Linux Service (Daemon)
 
 ### Testing Procedure
 
 ## 3D Modelling and Simulation
+
+### Testing Procedure
 
 The robot can also be visualised in both Gazebo and RViz.
 
