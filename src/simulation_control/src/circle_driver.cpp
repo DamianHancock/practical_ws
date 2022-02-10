@@ -27,6 +27,11 @@ int main(int argc, char **argv) {
       msg.angular.z = 2.0;
       pub.publish(msg);
     }
+    else{
+      msg.linear.x = 0.0;
+      msg.angular.z = 0.0;
+      pub.publish(msg);
+    }
     
     rate.sleep();
   }

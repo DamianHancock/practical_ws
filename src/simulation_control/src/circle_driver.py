@@ -27,10 +27,16 @@ def move():
             vel_msg.linear.x = 0.0
             vel_msg.angular.z = 2.0
             vel_pub.publish(vel_msg)
-        
+
+        else:
+            vel_msg.linear.x = 0.0
+            vel_msg.angular.z = 0.0
+            vel_pub.publish(vel_msg)
+
         rate.sleep()
 
 if __name__ == '__main__':
     try:
         move()
-    except rospy.ROSInterruptException: pass
+    except rospy.ROSInterruptException: 
+        pass
