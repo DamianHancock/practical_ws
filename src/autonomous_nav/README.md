@@ -14,14 +14,16 @@ This includes the Gazebo, RViz and Navigation packages.
 * AMCL (adaptive Monte Carlo localization is used for localising the odemetry of the Husky against the known map using a particle filter. Move base then acts as the controller between the information received from the sensor and localisation data to generate paths. 
 * The goals themselves are loaded from a .csv located in `/practical/src/autonomous_nav/resources/coordinates.csv`. These goals are set within the code itself in the current build state, but can also be altered directly in the .csv which will be discussed in the testing procedure.
 
-## Workspace Setup
+## Testing and Running
+
+### Workspace Setup
 
 Make sure you are using the Catkin Workspace `/practical_ws` and that was previously cloned from [here](https://github.com/DamianHancock/practical_ws).
 Don't forget to build and source!
 
 The Husky Visualisation and Navigation Packages have been included in this repository so no further install is necessary.
 
-## Launching the Navigation Stack
+### Launching the Navigation Stack
 
 Follow each step below:
 ```
@@ -54,3 +56,9 @@ An example of the .launch file is as follows:
       </node>
   </launch>
 ```
+### Expected Operation
+* When the launch file has been run Gazebo will first open after a couple of seconds. The Husky Playpen world has been chosen as the basic testing grounds for the autonomous navigation purposes
+* RViz will then launch showing appropriate visualisation of sensors
+* Move_Base will begin with AMCL configuration loaded
+* Then either the C++ or Python node will start based on which launch file was run
+* Messages will be displayed when new goals are read from the csv and loaded into the path plan within move_base
