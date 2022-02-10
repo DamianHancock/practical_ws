@@ -1,0 +1,10 @@
+<launch>
+    <include file="$(find timed_roslaunch)/launch/timed_task_one.launch">
+    </include>
+    
+    <include file="$(find timed_roslaunch)/launch/timed_roslaunch.launch">
+        <arg name="time" value="8" />
+        <arg name="pkg" value="simulation_control" />
+        <arg name="file" value="circle_driver_cpp.launch" />
+    </include>
+</launch>
