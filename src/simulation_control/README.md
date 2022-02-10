@@ -34,7 +34,7 @@ $ roslaunch simulation_control task_one_cpp.launch
 ```
 * Python node: 
 ```bash
-$ roslaunch simulation_control task_one_cpp.launch
+$ roslaunch simulation_control task_one_py.launch
 ```
 
 An example of the .launch file is as follows:
