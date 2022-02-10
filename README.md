@@ -2,7 +2,7 @@
 
 Pre-requisites to run packages within this repository:
 * Ubuntu 18.04 and ROS Melodic
-  * Please follow the [installation instructions here](http://wiki.ros.org/melodic/Installation/Ubuntu)
+  * Please follow the installation instructions [here](http://wiki.ros.org/melodic/Installation/Ubuntu)
 * Read the information pertaining to the description of each part of this practical test before cloning this repository
 
 # Part 1: Simulation Robot Control
@@ -10,7 +10,7 @@ Pre-requisites to run packages within this repository:
 ## Task Description
 The Clearpath Husky has been controlled to perform two consecutive rotations. The first involves rotating the robot clockwise for 10 seconds, and the second rotating anti-clockwise for another 10 seconds before coming to a halt.
 
-The node which performs the communication () of these commands to the robot has first been written in Python, then in C++. Both nodes perform identically.
+The node which performs the communication of these commands to the robot has first been written in Python, then in C++. Both nodes perform identically.
 
 A package named simulation_control has been included in this repository which contains all relevant files to perform this task.
 
@@ -24,6 +24,9 @@ Components:
 + 1x C++ Node
 + 1x Ubuntu System Service
 
+Testing:
++ Please follow the testing instructions in the package README.md [here](https://github.com/DamianHancock/practical_ws/tree/master/src/simulation_control)
+
 # Part 2: Autonomous Navigation
 
 ## Task Description
@@ -31,7 +34,7 @@ The Clearpath Husky has been enabled to travel to specified goal coordinates wit
 
 The robot essentially navigates to each goal set in the .csv file (one goal per row), and will save the final location reached when finishing the set path and saving the final coordiantes reached and the status message of whether the goal was reached or not.
 
-The node which performs the communication () of these commands to the robot has first been written in Python, then in C++. Both nodes perform identically.
+The node which performs the communication of these commands to the robot has first been written in Python, then in C++. Both nodes perform identically.
 
 A package named autonomous_nav has been included in this repository which contains all relevant files to perform this task.
 
@@ -47,6 +50,9 @@ Components:
 + 1x C++ Node
 + 1x .csv File
 
+Testing:
++ Please follow the testing instructions in the package README.md [here](https://github.com/DamianHancock/practical_ws/tree/master/src/autonomous_nav)
+
 # Configuring Workspace
 
 ## Follow each step carefully
@@ -59,29 +65,44 @@ The workspace tree has the following structure before building:
 
 ```sh
 practical_ws
-├── CMakeLists.txt -> /opt/ros/melodic/share/catkin/cmake/toplevel.cmake
-├── README.md
 └── src
     ├── autonomous_nav
-    │   ├── CMakeLists.txt
     │   ├── launch
-    │   │   └── autonomous_nav.launch
-    │   ├── package.xml
-    │   ├── README.md
     │   ├── resources
-    │   │   └── coordinates.csv
     │   └── src
-    │       ├── traverse_goals.cpp
-    │       └── traverse_goals.py
-    └── simulation_control
-        ├── CMakeLists.txt
+    ├── husky
+    │   ├── husky_control
+    │   │   ├── config
+    │   │   └── launch
+    │   ├── husky_description
+    │   │   ├── launch
+    │   │   ├── meshes
+    │   │   │   └── accessories
+    │   │   └── urdf
+    │   │       └── accessories
+    │   ├── husky_desktop
+    │   ├── husky_gazebo
+    │   │   ├── launch
+    │   │   └── worlds
+    │   ├── husky_msgs
+    │   │   └── msg
+    │   ├── husky_navigation
+    │   │   ├── config
+    │   │   ├── launch
+    │   │   └── maps
+    │   ├── husky_simulator
+    │   └── husky_viz
+    │       ├── launch
+    │       ├── rqt
+    │       └── rviz
+    ├── simulation_control
+    │   ├── launch
+    │   └── src
+    └── timed_roslaunch
         ├── launch
-        │   └── sim_control.launch
-        ├── package.xml
-        ├── README.md
-        └── src
-            ├── circle_driver.cpp
-            └── circle_driver.py
+        ├── scripts
+        └── test
+
 ```
 
 ### Git Clone
