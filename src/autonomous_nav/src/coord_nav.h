@@ -45,5 +45,4 @@ class CoordNav
         void pos_cb(const move_base_msgs::MoveBaseActionFeedback::ConstPtr& msg);
 };
 
-
 #endif

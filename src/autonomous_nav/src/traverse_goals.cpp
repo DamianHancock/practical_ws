@@ -65,10 +65,6 @@ int main(int argc, char **argv)
                 ori_w = goals[i][3];
                 publish = true;
             }
-            else
-            {
-                ros::shutdown();
-            }
         }
         rate.sleep();
         ros::spinOnce();
