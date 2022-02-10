@@ -1,0 +1,13 @@
+<launch>
+    <include file="$(find timed_roslaunch)/launch/timed_roslaunch.launch">
+        <arg name="time" value="2" />
+        <arg name="pkg" value="husky_gazebo" />
+        <arg name="file" value="husky_empty_world.launch" />
+    </include>
+
+    <include file="$(find timed_roslaunch)/launch/timed_roslaunch.launch">
+        <arg name="time" value="6" />
+        <arg name="pkg" value="husky_viz" />
+        <arg name="file" value="view_robot.launch" />
+    </include>
+</launch>
