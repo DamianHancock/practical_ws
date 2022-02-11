@@ -63,13 +63,13 @@ This repository should be cloned in the desired directory, e.g. `~/`, as it cont
 
 To do this, either method can be used:
 ```sh
-cd ~/
-git clone https://github.com/DamianHancock/practical_ws.git
+$ cd ~/
+$ git clone https://github.com/DamianHancock/practical_ws.git
 ```
 Or if you are using SSH keys:
 ```
-cd ~/
-git clone git@github.com:DamianHancock/practical_ws.git
+$ cd ~/
+$ git clone git@github.com:DamianHancock/practical_ws.git
 ```
 
 ### Catkin Build
@@ -77,10 +77,10 @@ git clone git@github.com:DamianHancock/practical_ws.git
 Build and source the workshop, which will successfully build each package contained in this practical test.
 
 ```sh
-cd ~/practical_ws
-rosdep install --from-paths src --ignore-src -r -y
-catkin build
-source devel/setup.bash
+$ cd ~/practical_ws
+$ rosdep install --from-paths src --ignore-src -r -y
+$ catkin build
+$ source devel/setup.bash
 ```
 
 If the build command fails, install the required tools [here](https://catkin-tools.readthedocs.io/en/latest/installing.html).
@@ -110,7 +110,7 @@ Testing:
 # Part 2: Autonomous Navigation
 
 ## Task Description
-The Clearpath Husky has been enabled to travel to specified goal coordinates within a simulated world using Gazebo. The Husky Velodyne VLP16 (LiDAR Sensor) has been enabled to develop a global and local costmap coinciding with the immediate known environment within the simulated world. Access to this map allows the robot to produce an estimated planned path using the move_base navigation stack develop for the Husky. The goal(s) correlate with the coordinates that are read from the .csv, with the path being planned to reach it with high accuracy. Topics exist within this navigation stack which develops a final status whether the goal can be reached or not.
+The Clearpath Husky has been enabled to travel to specified goal coordinates within a simulated world using Gazebo. The Husky has been equipped with a LMS1XX LiDAR sensor to develop a global and local costmap coinciding with the immediate known environment within the simulated world. Access to this map allows the robot to produce an estimated planned path using the move_base navigation stack develop for the Husky, including AMCL localisation techniques. The goal(s) correlate with the coordinates that are read from the .csv, with the path being planned to reach it with high accuracy. Topics exist within this navigation stack which develops a final status whether the goal can be reached or not.
 
 The robot essentially navigates to each goal set in the .csv file (one goal per row), and will save the final location reached when finishing the set path and saving the final coordiantes reached and the status message of whether the goal was reached or not.
 
