@@ -36,6 +36,34 @@ Don't forget to build and source!
 
 ### Testing Procedure
 
+The custom nodes can be launched as a background service which publishes the husky_velocity_controller/cmd_vel topic. Visualisation of the daemon can be viewed using rqt services to understand the communication break down
+
+#### Launch the Daemon
+
+For launching the background process of the circle driver code:
+* C++ node: 
+```bash
+$ roslaunch simulation_control daemon_cpp.launch
+```
+* Python node: 
+```bash
+$ roslaunch simulation_control daemon_py.launch
+```
+This will start a master node, the control services for husky including the joint_states, and the `cmd_vel` messages will be published via the `circle_driver` node.
+
+To view the messages being sent, the topic that is being published can be shown, or the network can be visualised using rqt services:
+
+```bash
+$ rosrun rqt_graph rqt_graph
+```
+and/or
+
+```bash
+$ rostopic echo /husky_velocity_controller/cmd_vel
+```
+
+Using `rostopic echo` it can be seen that the robot is sent an angular z velocity of -2.0 for 10 seconds, and then the opposite for the next 10 seconds.
+
 ## 3D Modelling and Simulation
 
 ### Testing Procedure
