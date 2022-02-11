@@ -39,20 +39,22 @@ The Husky Visualisation and Navigation Packages have been included in this repos
 
 Follow each step below:
 ```
-cd ~/practical_ws
-catkin build
-source devel/setup.bash
+$ cd ~/practical_ws
+$ catkin build
+$ source devel/setup.bash
 ```
 
 The launch sequence includes `gazebo`, `rviz`, `move_base` and `task_two_node` in a single terminal window:
 
 C++ Node:
 ```bash
-roslaunch autonomous_nav task_two_cpp.launch
+$ export HUSKY_LMS1XX_ENABLED=1
+$ roslaunch autonomous_nav task_two_cpp.launch
 ```
 Python Node:
 ```bash
-roslaunch autonomous_nav task_two_py.launch
+$ export HUSKY_LMS1XX_ENABLED=1
+$ roslaunch autonomous_nav task_two_py.launch
 ```
 * If `rviz` appears cluttered, feel free to turn off the Sensing group of visualisers in the Displays panel
 
