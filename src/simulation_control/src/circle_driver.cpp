@@ -4,7 +4,7 @@
 #include <time.h>
 
 int main(int argc, char **argv) {
-  ros::init(argc, argv, "husky_controller");
+  ros::init(argc, argv, "circle_driver");
   ros::NodeHandle nh;
   ros::Publisher pub = nh.advertise<geometry_msgs::Twist>("husky_velocity_controller/cmd_vel", 100);
   ros::Rate rate(10);

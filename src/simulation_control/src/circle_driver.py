@@ -6,7 +6,7 @@ from geometry_msgs.msg import Twist
 
 
 def move():
-    rospy.init_node('husky_controller', anonymous=True)
+    rospy.init_node('circle_driver', anonymous=True)
     vel_pub = rospy.Publisher('husky_velocity_controller/cmd_vel', Twist, queue_size=100)
     vel_msg = Twist()
 

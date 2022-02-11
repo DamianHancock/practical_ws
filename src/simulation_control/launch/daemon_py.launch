@@ -1,0 +1,7 @@
+<launch>
+    <include file="$(find husky_control)/launch/control.launch">
+    </include>
+
+    <node pkg="simulation_control" name="circle_driver" type="circle_driver.py" output="screen">
+    </node>
+</launch>

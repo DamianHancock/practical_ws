@@ -1,4 +1,4 @@
-#include "coord_nav.h"
+#include "nav_util.h"
 
 vector<vector<string>> CoordNav::get_coord()
 {

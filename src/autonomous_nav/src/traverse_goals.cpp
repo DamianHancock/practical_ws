@@ -1,4 +1,4 @@
-#include "coord_nav.h"
+#include "nav_util.h"
 
 int main(int argc, char **argv)
 {
