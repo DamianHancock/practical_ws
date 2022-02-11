@@ -23,6 +23,18 @@ Don't forget to build and source!
 
 The Husky Visualisation and Navigation Packages have been included in this repository so no further install is necessary.
 
+### Setting and Saving Goals
+
+* To set custom coordinates before operation the code within `src/nav_util.py` or `src/nav_util.cpp` can be edited. It has been designed this way to avoid overlap when running the code multiple times as it saves the operator manually opening the csv and removing the sections that save at the end of operation
+* The `set_goals()` function in `src/nav_util.cpp` is shown below:
+![set_goals](https://user-images.githubusercontent.com/64782797/153536779-6de9c01c-4da2-4741-b06d-a11bce90a3ff.png)
+
+* The .csv file lies in the `/resources/` directory and has the following format:
+![ss](https://user-images.githubusercontent.com/64782797/153536063-e2622127-b258-4b72-930f-760346f77b66.png)
+* It can be seen in this example that the first 3 rows of the .csv were taken as the input goal coordinates, and the last 3 rows show the output of the planned movement
+* The status message is saved for extra information directly from `move_base/feedback`
+* The time taken (seconds) to reach each goal from the initial position is recorded for additional information
+
 ### Launching the Navigation Stack
 
 Follow each step below:
@@ -42,7 +54,6 @@ Python Node:
 ```bash
 roslaunch autonomous_nav task_two_py.launch
 ```
-
 * If `rviz` appears cluttered, feel free to turn off the Sensing group of visualisers in the Displays panel
 
 An example of the .launch file is as follows:
@@ -56,9 +67,12 @@ An example of the .launch file is as follows:
       </node>
   </launch>
 ```
+
 ### Expected Operation
 * When the launch file has been run Gazebo will first open after a couple of seconds. The Husky Playpen world has been chosen as the basic testing grounds for the autonomous navigation purposes
 * RViz will then launch showing appropriate visualisation of sensors
 * Move_Base will begin with AMCL configuration loaded
 * Then either the C++ or Python node will start based on which launch file was run
 * Messages will be displayed when new goals are read from the csv and loaded into the path plan within move_base
+* After all goals have attempted to be reached by the Husky, the final coordinates will all be appended to the .csv file for review
+
