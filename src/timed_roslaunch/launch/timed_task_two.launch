@@ -14,7 +14,6 @@
     <include file="$(find timed_roslaunch)/launch/timed_roslaunch.launch">
         <arg name="time" value="8" />
         <arg name="pkg" value="husky_navigation" />
-        <arg name="file" value="move_base.launch" />
-        <arg name="value" value="no_static_map:=true" />
+        <arg name="file" value="amcl_demo.launch" />
     </include>
 </launch>
