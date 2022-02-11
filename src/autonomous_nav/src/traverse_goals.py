@@ -1,14 +1,14 @@
 #!/usr/bin/env python
 
 import rospy
-import coord_nav
+import nav_util
 import actionlib
 import time
 from move_base_msgs.msg import MoveBaseAction, MoveBaseActionGoal, MoveBaseActionResult, MoveBaseActionFeedback
 
 
 def main():
-    cn = coord_nav.CoordNav()
+    cn = nav_util.CoordNav()
     publish = True
     i = 0
     cn.set_goals()
