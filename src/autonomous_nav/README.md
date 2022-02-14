@@ -27,6 +27,7 @@ The Husky Visualisation and Navigation Packages have been included in this repos
 
 * To set custom coordinates before operation the code within `src/nav_util.py` or `src/nav_util.cpp` can be edited. It has been designed this way to avoid overlap when running the code multiple times as it saves the operator manually opening the csv and removing the sections that save at the end of operation
 * The `set_goals()` function in `src/nav_util.cpp` is shown below:
+
 ![set_goals](https://user-images.githubusercontent.com/64782797/153536779-6de9c01c-4da2-4741-b06d-a11bce90a3ff.png)
 
 * The .csv file lies in the `/resources/` directory and has the following format:
