@@ -95,7 +95,7 @@ The node which performs the communication of these commands to the robot has fir
 A package named simulation_control has been included in this repository which contains all relevant files to perform this task.
 
 Summary:
-+ Spawn robot in simulated map
++ Start Daemon/Spawn robot in simulated map
 + Move robot clockwise for 10 seconds
 + Move robot anti-clockwise for 10 seconds
 
@@ -104,7 +104,7 @@ Components:
 + 1x C++ Node
 + 1x Ubuntu System Service
 
-Testing:
+## Testing
 + Please follow the testing instructions in the package README.md [here](https://github.com/DamianHancock/practical_ws/tree/master/src/simulation_control)
 
 # Part 2: Autonomous Navigation
@@ -130,5 +130,5 @@ Components:
 + 1x C++ Node
 + 1x .csv File
 
-Testing:
+## Testing
 + Please follow the testing instructions in the package README.md [here](https://github.com/DamianHancock/practical_ws/tree/master/src/autonomous_nav)
